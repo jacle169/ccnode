@@ -1,0 +1,12 @@
+C:\Users\jac\Documents\Visual Studio 2013\Projects\CoolpyIII\CoolpyIIIClient\bin\CoolpyIIIClient.dll.config
+C:\Users\jac\Documents\Visual Studio 2013\Projects\CoolpyIII\CoolpyIIIClient\bin\CoolpyIIIClient.dll
+C:\Users\jac\Documents\Visual Studio 2013\Projects\CoolpyIII\CoolpyIIIClient\bin\CoolpyIIIClient.pdb
+C:\Users\jac\Documents\Visual Studio 2013\Projects\CoolpyIII\CoolpyIIIClient\obj\Debug\CoolpyIIIClient.csprojResolveAssemblyReference.cache
+C:\Users\jac\Documents\Visual Studio 2013\Projects\CoolpyIII\CoolpyIIIClient\obj\Debug\CoolpyIIIClient.dll
+C:\Users\jac\Documents\Visual Studio 2013\Projects\CoolpyIII\CoolpyIIIClient\obj\Debug\CoolpyIIIClient.pdb
+C:\Users\jacob\Documents\Visual Studio 2013\Projects\CoolpyIII\CoolpyIIIClient\bin\CoolpyIIIClient.dll.config
+C:\Users\jacob\Documents\Visual Studio 2013\Projects\CoolpyIII\CoolpyIIIClient\bin\CoolpyIIIClient.dll
+C:\Users\jacob\Documents\Visual Studio 2013\Projects\CoolpyIII\CoolpyIIIClient\bin\CoolpyIIIClient.pdb
+C:\Users\jacob\Documents\Visual Studio 2013\Projects\CoolpyIII\CoolpyIIIClient\obj\Debug\CoolpyIIIClient.csprojResolveAssemblyReference.cache
+C:\Users\jacob\Documents\Visual Studio 2013\Projects\CoolpyIII\CoolpyIIIClient\obj\Debug\CoolpyIIIClient.dll
+C:\Users\jacob\Documents\Visual Studio 2013\Projects\CoolpyIII\CoolpyIIIClient\obj\Debug\CoolpyIIIClient.pdb

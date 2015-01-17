@@ -1,0 +1,6 @@
+C:\Users\jac\Documents\Visual Studio 2013\Projects\CoolpyIII\coolppIIIwebsite\bin\coolppIIIwebsite.dll.config
+C:\Users\jac\Documents\Visual Studio 2013\Projects\CoolpyIII\coolppIIIwebsite\bin\coolppIIIwebsite.dll
+C:\Users\jac\Documents\Visual Studio 2013\Projects\CoolpyIII\coolppIIIwebsite\bin\coolppIIIwebsite.pdb
+C:\Users\jac\Documents\Visual Studio 2013\Projects\CoolpyIII\coolppIIIwebsite\obj\Debug\coolppIIIwebsite.csprojResolveAssemblyReference.cache
+C:\Users\jac\Documents\Visual Studio 2013\Projects\CoolpyIII\coolppIIIwebsite\obj\Debug\coolppIIIwebsite.dll
+C:\Users\jac\Documents\Visual Studio 2013\Projects\CoolpyIII\coolppIIIwebsite\obj\Debug\coolppIIIwebsite.pdb

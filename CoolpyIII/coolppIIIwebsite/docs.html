@@ -1,0 +1,1437 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <title>酷痞 | API文档</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="alternate icon" type="image/png" href="assets/i/favicon.png">
+    <link rel="stylesheet" href="assets/css/amazeui.min.css" />
+    <style>
+        @media only screen and (min-width: 641px) {
+            .am-offcanvas {
+                display: block;
+                position: static;
+                background: none;
+            }
+
+            .am-offcanvas-bar {
+                position: static;
+                width: auto;
+                background: none;
+                -webkit-transform: translate3d(0, 0, 0);
+                -ms-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+
+                .am-offcanvas-bar:after {
+                    content: none;
+                }
+        }
+
+        @media only screen and (max-width: 640px) {
+            .am-offcanvas-bar .am-nav > li > a {
+                color: #ccc;
+                border-radius: 0;
+                border-top: 1px solid rgba(0,0,0,.3);
+                box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
+            }
+
+                .am-offcanvas-bar .am-nav > li > a:hover {
+                    background: #404040;
+                    color: #fff;
+                }
+
+            .am-offcanvas-bar .am-nav > li.am-nav-header {
+                color: #777;
+                background: #404040;
+                box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
+                text-shadow: 0 1px 0 rgba(0,0,0,.5);
+                border-top: 1px solid rgba(0,0,0,.3);
+                font-weight: 400;
+                font-size: 75%;
+            }
+
+            .am-offcanvas-bar .am-nav > li.am-active > a {
+                background: #1a1a1a;
+                color: #fff;
+                box-shadow: inset 0 1px 3px rgba(0,0,0,.3);
+            }
+
+            .am-offcanvas-bar .am-nav > li + li {
+                margin-top: 0;
+            }
+        }
+
+        .my-head {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .my-button {
+            position: fixed;
+            top: 0;
+            right: 0;
+            border-radius: 0;
+        }
+
+        .my-sidebar {
+            padding-right: 0;
+            border-right: 1px solid #eeeeee;
+        }
+
+        .my-footer {
+            border-top: 1px solid #eeeeee;
+            padding: 10px 0;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header class="am-g my-head">
+        <div class="am-u-sm-12 am-article">
+            <h1 class="am-article-title">Coolpy酷痞 API v1.0</h1>
+            <p class="am-article-meta">黎东海（JACLE169@21CN.COM）</p>
+        </div>
+    </header>
+    <hr class="am-article-divider" />
+    <div class="am-g am-g-fixed">
+        <div class="am-u-md-9 am-u-md-push-3">
+            <div class="am-g">
+                <div class="am-u-sm-11 am-u-sm-centered">
+                    <div class="am-cf am-article">
+                        <h2 id="begin">前言</h2>
+                        <hr />
+                        <h2>Coolpy酷痞 API V1.0采用RESTful风格。</h2>
+                        <blockquote>
+                            有关格式相关的内容请参见 <a href="http://json.org/" target="_blank">JSON</a><br />
+                            <img src="Number.gif" /><br />
+                            {value: 0.1} 合法格式<br />
+                            {value: 00.0} 非法格式<br />
+                        </blockquote>
+                        <h2>关于请求头的设置</h2>
+                        <h3>必须请求头中设置Content-Type为application/json</h3>
+                        <h3>示例</h3>
+                        <blockquote>
+                            $.ajax({<br />
+                            type: "POST",<br />
+                            url: "/v1.0/devices",<br />
+                            beforeSend: function (xhr) {<br />
+                            xhr.setRequestHeader("U-ApiKey", xxxxxxxxxxxxxxxxxx),<br />
+                            xhr.setRequestHeader("Content-Type", "application/json")<br />
+                            }<br />
+                        </blockquote>
+                        <hr class="am-article-divider">
+                        <h2 id="devices">设备接口 Devices</h2>
+                        <hr />
+                        <p>设备代表一组传感器的集合，设备分为开发设备和终端设备两种。</p>
+                        <h2 id="createdevice">创建设备</h2>
+                        <h2 id="createdevicepost">POST</h2>
+                        <blockquote>/v1.0/devices</blockquote>
+                        <h2 id="createdevicepostdata">POST数据</h2>
+                        <p>
+                            <blockquote>
+                                {<br />
+                                "title":"test",<br />
+                                "about":"test api",<br />
+                                "tags":"temperature,lab",<br />
+                                "location":{<br />
+                                "local":"Qingdao",<br />
+                                "latitude":0.444,<br />
+                                "longitude":0.555<br />
+                                }<br />
+                                }<br />
+                            </blockquote>
+                        </p>
+                        <table class="am-table am-table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>字段</th>
+                                    <th>类型</th>
+                                    <th>可为空</th>
+                                    <th>备注</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>title</td>
+                                    <td>string</td>
+                                    <td>否</td>
+                                    <td>标题</td>
+                                </tr>
+                                <tr>
+                                    <td>about</td>
+                                    <td>string</td>
+                                    <td>否</td>
+                                    <td>简介</td>
+                                </tr>
+                                <tr>
+                                    <td>tags</td>
+                                    <td>string</td>
+                                    <td>否</td>
+                                    <td>标签</td>
+                                </tr>
+                                <tr>
+                                    <td>location</td>
+                                    <td>json</td>
+                                    <td>否</td>
+                                    <td>地理位置信息</td>
+                                </tr>
+                                <tr>
+                                    <td>location.local</td>
+                                    <td>string</td>
+                                    <td>否</td>
+                                    <td>地理位置，如：山东青岛</td>
+                                </tr>
+                                <tr>
+                                    <td>location.latitude</td>
+                                    <td>float</td>
+                                    <td>否</td>
+                                    <td>经度</td>
+                                </tr>
+                                <tr>
+                                    <td>location.longitude</td>
+                                    <td>float</td>
+                                    <td>否</td>
+                                    <td>纬度</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h2 id="createdeviceresult">返回值</h2>
+                        <h3>json</h3>
+                        <blockquote>
+                            {"device_id":3}
+                        </blockquote>
+                        <table class="am-table am-table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>字段</th>
+                                    <th>类型</th>
+                                    <th>可为空</th>
+                                    <th>备注</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>device_id</td>
+                                    <td>int</td>
+                                    <td>否</td>
+                                    <td>设备ID</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h2 id="createdeviceukey">访问授权</h2>
+                        <blockquote>U-ApiKey: &lt;your_api_key&gt;</blockquote>
+                        <hr class="am-article-divider">
+
+                        <h2 id="putdevices">编辑设备</h2>
+                        <h3 id="putdevice">PUT</h3>
+                        <blockquote>/v1.0/devices/&lt;device_id&gt;</blockquote>
+                        <h3 id="putdevicepudata">PUT数据</h3>
+                        <blockquote>
+                            {<br />
+                            "title":"test",<br />
+                            "about":"test api",<br />
+                            "tags":"temperature,lab",<br />
+                            "location":{<br />
+                            "local":"Qingdao",<br />
+                            "latitude":0.444,<br />
+                            "longitude":0.555<br />
+                            }<br />
+                            }<br />
+                        </blockquote>
+                        <table class="am-table am-table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>字段</th>
+                                    <th>类型</th>
+                                    <th>可为空</th>
+                                    <th>备注</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>title</td>
+                                    <td>string</td>
+                                    <td>否</td>
+                                    <td>标题</td>
+                                </tr>
+                                <tr>
+                                    <td>about</td>
+                                    <td>string</td>
+                                    <td>否</td>
+                                    <td>简介</td>
+                                </tr>
+                                <tr>
+                                    <td>tags</td>
+                                    <td>string</td>
+                                    <td>否</td>
+                                    <td>标签</td>
+                                </tr>
+                                <tr>
+                                    <td>location</td>
+                                    <td>json</td>
+                                    <td>否</td>
+                                    <td>地理位置信息</td>
+                                </tr>
+                                <tr>
+                                    <td>location.local</td>
+                                    <td>string</td>
+                                    <td>否</td>
+                                    <td>地理位置，如：山东青岛</td>
+                                </tr>
+                                <tr>
+                                    <td>location.latitude</td>
+                                    <td>float</td>
+                                    <td>否</td>
+                                    <td>经度</td>
+                                </tr>
+                                <tr>
+                                    <td>location.longitude</td>
+                                    <td>float</td>
+                                    <td>否</td>
+                                    <td>纬度</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h2 id="putdeviceresult">返回值</h2>
+                        <blockquote>
+                            返回值为空
+                        </blockquote>
+                        <h2 id="putdeviceukey">访问授权</h2>
+                        <blockquote>U-ApiKey: &lt;your_api_key&gt;</blockquote>
+                        <hr class="am-article-divider">
+
+                        <h2 id="getdevices">罗列设备</h2>
+                        <h3 id="getdevice">GET</h3>
+                        <blockquote>/v1.0/devices</blockquote>
+                        <h2 id="getdeveiceresult">返回值</h2>
+                        <h3>json</h3>
+                        <blockquote>
+                            [<br />
+                            {<br />
+                            "id": 1,<br />
+                            "title": "我的设备一",<br />
+                            "about": "第一个设备",<br />
+                            "location": {<br />
+                            "local": "广州市白云区",<br />
+                            "latitude": 23.189047,<br />
+                            "longitude": 113.28873<br />
+                            },<br />
+                            "tags": [<br />
+                            "设备一"<br />
+                            ]<br />
+                            }<br />
+                            ]<br />
+                        </blockquote>
+                        <blockquote>返回值为一个JSON数组，数组内容为用户所有的设备列表</blockquote>
+                        <table class="am-table am-table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>字段</th>
+                                    <th>类型</th>
+                                    <th>可为空</th>
+                                    <th>备注</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>title</td>
+                                    <td>string</td>
+                                    <td>否</td>
+                                    <td>标题</td>
+                                </tr>
+                                <tr>
+                                    <td>about</td>
+                                    <td>string</td>
+                                    <td>否</td>
+                                    <td>简介</td>
+                                </tr>
+                                <tr>
+                                    <td>tags</td>
+                                    <td>string</td>
+                                    <td>否</td>
+                                    <td>标签</td>
+                                </tr>
+                                <tr>
+                                    <td>location</td>
+                                    <td>json</td>
+                                    <td>否</td>
+                                    <td>地理位置信息</td>
+                                </tr>
+                                <tr>
+                                    <td>location.local</td>
+                                    <td>string</td>
+                                    <td>否</td>
+                                    <td>地理位置，如：山东青岛</td>
+                                </tr>
+                                <tr>
+                                    <td>location.latitude</td>
+                                    <td>float</td>
+                                    <td>否</td>
+                                    <td>经度</td>
+                                </tr>
+                                <tr>
+                                    <td>location.longitude</td>
+                                    <td>float</td>
+                                    <td>否</td>
+                                    <td>纬度</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h2 id="getdeviceukey">访问授权</h2>
+                        <blockquote>U-ApiKey: &lt;your_api_key&gt;</blockquote>
+
+                        <hr class="am-article-divider">
+                        <h2 id="get1devices">查看设备</h2>
+                        <h3 id="get1device">GET</h3>
+                        <blockquote>/v1.0/device/&lt;device_id&gt;</blockquote>
+                        <h2 id="get1deveiceresult">返回值</h2>
+                        <h3>json</h3>
+                        <blockquote>
+                            [<br />
+                            {<br />
+                            "id": 1,<br />
+                            "title": "我的设备一",<br />
+                            "about": "第一个设备",<br />
+                            "location": {<br />
+                            "local": "广州市白云区",<br />
+                            "latitude": 23.189047,<br />
+                            "longitude": 113.28873<br />
+                            },<br />
+                            "tags": [<br />
+                            "设备一"<br />
+                            ]<br />
+                            }<br />
+                            ]<br />
+                        </blockquote>
+                        <table class="am-table am-table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>字段</th>
+                                    <th>类型</th>
+                                    <th>可为空</th>
+                                    <th>备注</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>title</td>
+                                    <td>string</td>
+                                    <td>否</td>
+                                    <td>标题</td>
+                                </tr>
+                                <tr>
+                                    <td>about</td>
+                                    <td>string</td>
+                                    <td>否</td>
+                                    <td>简介</td>
+                                </tr>
+                                <tr>
+                                    <td>tags</td>
+                                    <td>string</td>
+                                    <td>否</td>
+                                    <td>标签</td>
+                                </tr>
+                                <tr>
+                                    <td>location</td>
+                                    <td>json</td>
+                                    <td>否</td>
+                                    <td>地理位置信息</td>
+                                </tr>
+                                <tr>
+                                    <td>location.local</td>
+                                    <td>string</td>
+                                    <td>否</td>
+                                    <td>地理位置，如：山东青岛</td>
+                                </tr>
+                                <tr>
+                                    <td>location.latitude</td>
+                                    <td>float</td>
+                                    <td>否</td>
+                                    <td>经度</td>
+                                </tr>
+                                <tr>
+                                    <td>location.longitude</td>
+                                    <td>float</td>
+                                    <td>否</td>
+                                    <td>纬度</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h2 id="get1deviceukey">访问授权</h2>
+                        <blockquote>U-ApiKey: &lt;your_api_key&gt;</blockquote>
+                        <hr class="am-article-divider">
+
+                        <hr class="am-article-divider">
+                        <h2 id="deldevices">删除设备</h2>
+                        <h3 id="deldevice">DELETE</h3>
+                        <blockquote>/v1.0/devices/&lt;device_id&gt;</blockquote>
+                        <h2 id="deldeviceresult">返回值</h2>
+                        <blockquote>
+                            返回值为空
+                        </blockquote>
+                        <h2 id="deldeviceukey">访问授权</h2>
+                        <blockquote>U-ApiKey: &lt;your_api_key&gt;</blockquote>
+                        <hr class="am-article-divider">
+
+                        <h2 id="sensors">传感器接口 Sensors</h2>
+                        <hr />
+                        <h2 id="createsenesor">创建传感器</h2>
+                        <h2 id="createsenesorpost">POST</h2>
+                        <blockquote>/v1.0/device/&lt;device_id&gt;/sensors</blockquote>
+                        <h2 id="createsenesorpostdata">POST数据</h2>
+                        <p>
+                            <blockquote>
+                                {<br />
+                                "type":"value",<br />
+                                "title":"温度传感器测试",<br />
+                                "about":"这是一个测试传感器",<br />
+                                "tags":"数据,温度",<br />
+                                "unit": {<br />
+                                "name": "摄氏度",<br />
+                                "symbol": "°C"<br />
+                                }<br />
+                                }<br />
+                            </blockquote>
+                        </p>
+                        <table class="am-table am-table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>字段</th>
+                                    <th>类型</th>
+                                    <th>可为空</th>
+                                    <th>备注</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>type</td>
+                                    <td>string</td>
+                                    <td>否</td>
+                                    <td>传感器类型：value, switcher, gps, gen, photo</td>
+                                </tr>
+                                <tr>
+                                    <td>title</td>
+                                    <td>string</td>
+                                    <td>否</td>
+                                    <td>标题</td>
+                                </tr>
+                                <tr>
+                                    <td>about</td>
+                                    <td>string</td>
+                                    <td>否</td>
+                                    <td>简介</td>
+                                </tr>
+                                <tr>
+                                    <td>tags</td>
+                                    <td>string</td>
+                                    <td>否</td>
+                                    <td>标签</td>
+                                </tr>
+                                <tr>
+                                    <td>unit</td>
+                                    <td>json</td>
+                                    <td>否</td>
+                                    <td>单位符号</td>
+                                </tr>
+                                <tr>
+                                    <td>unit.name</td>
+                                    <td>string</td>
+                                    <td>否</td>
+                                    <td>单位</td>
+                                </tr>
+                                <tr>
+                                    <td>unit.symbol</td>
+                                    <td>string</td>
+                                    <td>否</td>
+                                    <td>符号</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h2 id="createsenesorresult">返回值</h2>
+                        <h3>json</h3>
+                        <blockquote>
+                            {"sensor_id":2}
+                        </blockquote>
+                        <table class="am-table am-table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>字段</th>
+                                    <th>类型</th>
+                                    <th>可为空</th>
+                                    <th>备注</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>sensor_id</td>
+                                    <td>int</td>
+                                    <td>否</td>
+                                    <td>传感器ID</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h2 id="createsenesorukey">访问授权</h2>
+                        <blockquote>U-ApiKey: &lt;your_api_key&gt;</blockquote>
+                        <hr class="am-article-divider">
+
+                        <h2 id="putsensors">编辑传感器</h2>
+                        <h3 id="putsensor">PUT</h3>
+                        <blockquote>/v1.0/device/&lt;device_id&gt;/sensor/&lt;sensor_id&gt;</blockquote>
+                        <h3 id="putsensordata">PUT数据</h3>
+                        <blockquote>
+                            {<br />
+                            "title": "数值型传感器",<br />
+                            "about": "这是一个数值传感器",<br />
+                            "unit": {<br />
+                            "name": "度",<br />
+                            "symbol": "°C"<br />
+                            },<br />
+                            "tags": [<br />
+                            "温度1"<br />
+                            ]<br />
+                            }<br />
+                        </blockquote>
+                        <table class="am-table am-table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>字段</th>
+                                    <th>类型</th>
+                                    <th>可为空</th>
+                                    <th>备注</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>title</td>
+                                    <td>string</td>
+                                    <td>否</td>
+                                    <td>标题</td>
+                                </tr>
+                                <tr>
+                                    <td>about</td>
+                                    <td>string</td>
+                                    <td>否</td>
+                                    <td>简介</td>
+                                </tr>
+                                <tr>
+                                    <td>tags</td>
+                                    <td>string</td>
+                                    <td>否</td>
+                                    <td>标签</td>
+                                </tr>
+                                <tr>
+                                    <td>unit</td>
+                                    <td>json</td>
+                                    <td>否</td>
+                                    <td>单位符号</td>
+                                </tr>
+                                <tr>
+                                    <td>unit.name</td>
+                                    <td>string</td>
+                                    <td>否</td>
+                                    <td>单位</td>
+                                </tr>
+                                <tr>
+                                    <td>unit.symbol</td>
+                                    <td>string</td>
+                                    <td>否</td>
+                                    <td>符号</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h2 id="putsensorresult">返回值</h2>
+                        <blockquote>
+                            返回值为空
+                        </blockquote>
+                        <h2 id="putdeviceukey">访问授权</h2>
+                        <blockquote>U-ApiKey: &lt;your_api_key&gt;</blockquote>
+                        <hr class="am-article-divider">
+
+                        <h2 id="getseneors">罗列传感器</h2>
+                        <h3 id="getseneor">GET</h3>
+                        <blockquote>/v1.0/device/&lt;device_id&gt;/sensors</blockquote>
+                        <h2 id="getseneorresult">返回值</h2>
+                        <h3>json</h3>
+                        <blockquote>
+                            [<br />
+                            {<br />
+                            "id": 1,<br />
+                            "dvid": 1,<br />
+                            "type": "value",<br />
+                            "title": "数值型传感器",<br />
+                            "about": "这是一个数值传感器",<br />
+                            "unit": {<br />
+                            "name": "度",<br />
+                            "symbol": "°C"<br />
+                            },<br />
+                            "tags": [<br />
+                            "温度1"<br />
+                            ]<br />
+                            },<br />
+                            {<br />
+                            "id": 2,<br />
+                            "dvid": 1,<br />
+                            "type": "gps",<br />
+                            "title": "GPS传感器",<br />
+                            "about": "这是一个gps传感器",<br />
+                            "unit": {<br />
+                            "name": "null",<br />
+                            "symbol": "null"<br />
+                            },<br />
+                            "tags": [<br />
+                            "我的汽车"<br />
+                            ]<br />
+                            }<br />
+                            ]<br />
+                        </blockquote>
+                        <blockquote>返回值为一个JSON数组，数组内容为用户所有的设备列表</blockquote>
+                        <table class="am-table am-table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>字段</th>
+                                    <th>类型</th>
+                                    <th>备注</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>int</td>
+                                    <td>传感器ID</td>
+                                </tr>
+                                <tr>
+                                    <td>dvid</td>
+                                    <td>int</td>
+                                    <td>传感器所属设备ID</td>
+                                </tr>
+                                <tr>
+                                    <td>title</td>
+                                    <td>string</td>
+                                    <td>标题</td>
+                                </tr>
+                                <tr>
+                                    <td>about</td>
+                                    <td>string</td>
+                                    <td>简介</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h2 id="getseneorukey">访问授权</h2>
+                        <blockquote>U-ApiKey: &lt;your_api_key&gt;</blockquote>
+                        <hr class="am-article-divider">
+
+                        <h2 id="get1sensors">查看传感器</h2>
+                        <p>对该地址发起GET请求将会获得指定ID的传感器的详细信息。</p>
+                        <h3 id="get1sensor">GET</h3>
+                        <blockquote>/v1.0/device/&lt;device_id&gt;/sensor/&lt;sensor_id&gt;</blockquote>
+                        <h2 id="get1sensorresult">返回值</h2>
+                        <h3>json</h3>
+                        <blockquote id="get1sensorvalue">
+                            {<br />
+                            "id": 1,<br />
+                            "type": "value",<br />
+                            "title": "数值型传感器",<br />
+                            "about": "这是一个数值传感器",<br />
+                            "unit": {<br />
+                            "name": "度",<br />
+                            "symbol": "°C"<br />
+                            },<br />
+                            "tags": [<br />
+                            "温度1"<br />
+                            ]<br />
+                            }<br />
+                        </blockquote>
+                        <table class="am-table am-table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>字段</th>
+                                    <th>类型</th>
+                                    <th>备注</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>int</td>
+                                    <td>传感器ID</td>
+                                </tr>
+                                <tr>
+                                    <td>type</td>
+                                    <td>string</td>
+                                    <td>传感器类型：value, switcher, gps, gen, photo</td>
+                                </tr>
+                                <tr>
+                                    <td>title</td>
+                                    <td>string</td>
+                                    <td>标题</td>
+                                </tr>
+                                <tr>
+                                    <td>about</td>
+                                    <td>string</td>
+                                    <td>简介</td>
+                                </tr>
+                                <tr>
+                                    <td>tags</td>
+                                    <td>string</td>
+                                    <td>标签</td>
+                                </tr>
+                                <tr>
+                                    <td>unit_name</td>
+                                    <td>string</td>
+                                    <td>单位名称</td>
+                                </tr>
+                                <tr>
+                                    <td>unit_symbol</td>
+                                    <td>string</td>
+                                    <td>单位符号</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h2 id="get1sensorukey">访问授权</h2>
+                        <blockquote>U-ApiKey: &lt;your_api_key&gt;</blockquote>
+                        <hr class="am-article-divider">
+
+                        <h2 id="delsensors">删除传感器</h2>
+                        <h3 id="delsensor">DELETE</h3>
+                        <blockquote>/v1.0/device/&lt;device_id&gt;/sensor/&lt;sensor_id&gt;</blockquote>
+                        <h2 id="delsensorresult">返回值</h2>
+                        <blockquote>
+                            返回值为空
+                        </blockquote>
+                        <h2 id="delsensorukey">访问授权</h2>
+                        <blockquote>U-ApiKey: &lt;your_api_key&gt;</blockquote>
+                        <hr class="am-article-divider">
+
+                        <h2 id="datapoints">数据点 Datapoints</h2>
+                        <hr />
+                        <h2 id="createdatapoints">创建数据点</h2>
+                       <blockquote>本章描述了如何为设备的传感器创建数据点。使用HTTP POST方法来使用本URL创建新的数据点。</blockquote>
+                        <h3 id="createdatapoint">创建单个数据点</h3>
+                        <h3>为传感器创建一个数据点。</h3>
+                        <h2 id="createdatapointpost">POST</h2>
+                        <blockquote>/v1.0/device/&lt;device_id&gt;/sensor/&lt;sensor_id&gt;/datapoints</blockquote>
+                        <h2 id="createdatapointpostdata">POST数据</h2>
+                        <h3 id="valdatapoint">数值型传感器</h3>
+                        <p>
+                            <blockquote>
+                                {<br />
+                                "timestamp":"2012-03-15T16:13:14",<br />
+                                "value":294.34<br />
+                                }<br />
+                            </blockquote>
+                        </p>
+                        <table class="am-table am-table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>字段</th>
+                                    <th>类型</th>
+                                    <th>备注</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>timestamp</td>
+                                    <td>string</td>
+                                    <td>时间，可为空</td>
+                                </tr>
+                                <tr>
+                                    <td>value</td>
+                                    <td>float</td>
+                                    <td>值</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h2 id="gpsdatapoint">GPS型传感器</h2>
+                        <blockquote>
+                            {<br />
+                              "timestamp":"2012-03-15T16:13:14",<br />
+                              "value":{"lat":35.4567,"lng":46.1234,"speed":98.2, offset: true}<br />
+                            }<br />
+                        </blockquote>
+                        <table class="am-table am-table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>字段</th>
+                                    <th>类型</th>
+                                    <th>备注</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>timestamp</td>
+                                    <td>string</td>
+                                    <td>时间，可为空</td>
+                                </tr>
+                                <tr>
+                                    <td>value</td>
+                                    <td>json</td>
+                                    <td>由lat，lng，speed, offset组成的JSON对象，分别为纬度，经度，速度，修正（可选）</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h2 id="gendatapoint">泛型传感器</h2>
+                        <blockquote>
+                            {<br />
+                            "key":"e10adc3949ba59abbe56e037f20f884e",<br />
+                            "value":{<br />
+                            //your code here<br />
+                            }<br />
+                            }<br />
+                        </blockquote>
+                        <table class="am-table am-table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>字段</th>
+                                    <th>类型</th>
+                                    <th>备注</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>key</td>
+                                    <td>string</td>
+                                    <td>键值，长度不超过128个字符</td>
+                                </tr>
+                                <tr>
+                                    <td>value</td>
+                                    <td>json</td>
+                                    <td>自定义数据格式，长度不超过1024个字符</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h2 id="createdatapointresult">返回值</h2>
+                        <h3>返回值为空</h3>
+                        <h2 id="createdatapointukey">访问授权</h2>
+                        <blockquote>U-ApiKey: &lt;your_api_key&gt;</blockquote>
+
+                        <hr />
+                        <h3 id="createmudatapoints">创建多个数据点(同一传感器)</h3>
+                        <h3>对同一传感器同时上传多个数据点。</h3>
+                        <h2 id="createmudatapointpost">POST</h2>
+                        <blockquote>/v1.0/device/&lt;device_id&gt;/sensor/&lt;sensor_id&gt;/datapoints</blockquote>
+                        <h2 id="createmudatapointpostdata">POST数据</h2>
+                        <h3 id="valmudatapoint">数值型传感器</h3>
+                        <p>
+                            <blockquote>
+                                [<br />
+                                {<br />
+                                "timestamp":"2012-03-15T16:13:14",<br />
+                                "value":294.34<br />
+                                },<br />
+                                {<br />
+                                "timestamp":"2012-03-15T16:13:24",<br />
+                                "value":284.34<br />
+                                }<br />
+                                ]<br />
+                            </blockquote>
+                        </p>
+                        <h2 id="gpsmudatapoint">GPS型传感器</h2>
+                        <blockquote>
+                            [<br />
+                            {<br />
+                            "timestamp":"2012-03-15T16:13:14",<br />
+                            "value":{"lat":35.4567,"lng":46.1234,"speed":98.2}<br />
+                            },<br />
+                            {<br />
+                            "timestamp":"2012-03-15T16:13:24",<br />
+                            "value":{"lat":35.4567,"lng":46.1234,"speed":98.2}<br />
+                            }<br />
+                            ]<br />
+                        </blockquote>
+                        <h2 id="genmudatapoint">泛型传感器</h2>
+                        <blockquote>
+                            [<br />
+                            {<br />
+                            "key":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",<br />
+                            "value":{<br />
+                            //your code here<br />
+                            }<br />
+                            },<br />
+                            {<br />
+                            "key":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",<br />
+                            "value":{<br />
+                            //your code here<br />
+                            }<br />
+                            },<br />
+                            ]<br />
+                        </blockquote>
+                        <h2 id="createmudatapointresult">返回值</h2>
+                        <h3>返回值为空</h3>
+                        <h2 id="createmudatapointukey">访问授权</h2>
+                        <blockquote>U-ApiKey: &lt;your_api_key&gt;</blockquote>
+                        <hr class="am-article-divider">
+
+                        <h2 id="putdatapoints">编辑数据点</h2>
+                        <h3 id="putdatapoint">PUT</h3>
+                        <blockquote>/v1.0/device/&lt;device_id&gt;/sensor/&lt;sensor_id&gt;/datapoint/&lt;key&gt;</blockquote>
+                        <h3 id="putdatapointdata">PUT数据</h3>
+                        <h3 id="putvaldatapoint">数值型传感器</h3>
+                        <blockquote>
+                            {<br />
+                            "value": 39.4<br />
+                            }<br />
+                        </blockquote>
+                        <h3 id="putgpsdatapoint">GPS型传感器</h3>
+                        <blockquote>
+                            {<br />
+                            "value": {"lat":35.4321,"lng":46.3451,"speed":98.2}<br />
+                            }<br />
+                        </blockquote>
+                        <h3 id="putgendatapoint">泛型传感器</h3>
+                        <blockquote>
+                            {<br />
+                            "value": {...}<br />
+                            }<br />
+                        </blockquote>
+                        <h2 id="putdatapointresult">返回值</h2>
+                        <blockquote>
+                            返回值为空
+                        </blockquote>
+                        <h2 id="putdatapointukey">访问授权</h2>
+                        <blockquote>U-ApiKey: &lt;your_api_key&gt;</blockquote>
+                        <hr class="am-article-divider">
+
+                        <h2 id="get1datapoints">查看数据点</h2>
+                        <h3 id="get1datapoint">GET</h3>
+                        <blockquote>/v1.0/device/&lt;device_id&gt;/sensor/&lt;sensor_id&gt;/datapoint/&lt;key&gt;</blockquote>
+                        <h2 id="get1datapointresult">返回值</h2>
+                        <h3>key不为空</h3>
+                        <blockquote id="get1datapointvaluenotnull">
+                            //数值型<br />
+                            {<br />
+                            "value": 39.4<br />
+                            }<br />
+                            //GPS型<br />
+                            {<br />
+                            "value": {"lat":35.4321,"lng":46.3451,"speed":98.2}<br />
+                            }<br />
+                            //泛型<br />
+                            {<br />
+                            "value": {...}<br />
+                            }<br />
+                        </blockquote>
+                        <h3>key为空</h3>
+                        <blockquote id="get1datapointvaluenull">
+                            //数值型<br />
+                            {<br />
+                            "timestamp":"2012-03-15T16:13:14",<br />
+                            "value": 39.4,<br />
+                            "sensor_id": 2132,<br />
+                            "device_id": 2234<br />
+                            }<br />
+                            //GPS型<br />
+                            {<br />
+                            "timestamp":"2012-03-15T16:13:14",<br />
+                            "value": {"lat":35.4321,"lng":46.3451,"speed":98.2}<br />
+                            }<br />
+                            //泛型<br />
+                            {<br />
+                            "key":"e10adc3949ba59abbe56e037f20f884e",<br />
+                            "value": {...}<br />
+                            }<br />
+                        </blockquote>
+                        <h2 id="get1datapointukey">访问授权</h2>
+                        <blockquote>U-ApiKey: &lt;your_api_key&gt;</blockquote>
+                        <hr class="am-article-divider">
+
+                        <h2 id="deldatapoints">删除数据点</h2>
+                        <h3 id="deldatapoint">DELETE</h3>
+                        <blockquote>/v1.0/device/&lt;device_id&gt;/sensor/&lt;sensor_id&gt;/datapoint/&lt;key&gt;</blockquote>
+                        <h2 id="deldatapointresult">返回值</h2>
+                        <blockquote>
+                            返回值为空
+                        </blockquote>
+                        <h2 id="deldatapointukey">访问授权</h2>
+                        <blockquote>U-ApiKey: &lt;your_api_key&gt;</blockquote>
+                        <hr class="am-article-divider">
+
+                        <h2 id="hdatas">历史数据</h2>
+                        <hr />
+                        <h2 id="hdata">查看历史数据</h2>
+                        <h3>用于查看指定时间段及指定采样间隔的历史数据。</h3>
+                        <h3 id="hdataget">GET</h3>
+                        <blockquote>/v1.0/device/&lt;device_id&gt;/sensor/&lt;sensor_id&gt;/json?start=&lt;start_timestamp&gt;&end=&lt;end_timestamp&gt;&interval=&lt;interval&gt;&page=&lt;page&gt;</blockquote>
+                        <table class="am-table am-table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>字段</th>
+                                    <th>类型</th>
+                                    <th>备注</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>device_id</td>
+                                    <td>int</td>
+                                    <td>设备ID</td>
+                                </tr>
+                                <tr>
+                                    <td>sensor_id</td>
+                                    <td>int</td>
+                                    <td>传感器ID</td>
+                                </tr>
+                                <tr>
+                                    <td>start_timestamp</td>
+                                    <td>string</td>
+                                    <td>开始时间，格式：2014-5-10T11:40:10</td>
+                                </tr>
+                                <tr>
+                                    <td>end_timestamp</td>
+                                    <td>string</td>
+                                    <td>结束时间，格式：2014-5-15T11:40:50</td>
+                                </tr>
+                                <tr>
+                                    <td>interval</td>
+                                    <td>int</td>
+                                    <td>间隔时间</td>
+                                </tr>
+                                <tr>
+                                    <td>page</td>
+                                    <td>int</td>
+                                    <td>分页，默认是1</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3>interval（数据采样间隔）说明</h3>
+                        <table class="am-table am-table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Interval</th>
+                                    <th>说明</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>每秒</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>10秒</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h2 id="hdataresult">返回值</h2>
+                        <h3 id="hdatajson">json</h3>
+                        <h3 id="hdataval">数值型传感器</h3>
+                        <blockquote>
+                            [<br />
+                            {"timestamp": "2012-06-15T14:00:00", "value":315},<br />
+                            {"timestamp": "2012-06-15T14:00:10", "value":316},<br />
+                            {"timestamp": "2012-06-15T14:00:20", "value":317},<br />
+                            {"timestamp": "2012-06-15T14:00:30", "value":317},<br />
+                            {"timestamp": "2012-06-15T14:00:40", "value":317}<br />
+                            ]<br />
+                        </blockquote>
+                        <h3 id="hdatagps">GPS型传感器</h3>
+                        <blockquote>
+                            [<br />
+                            {"timestamp": "2012-06-15T14:00:00", "value":{"lat":35.4,"lng":46.1,"speed":98.2}},<br />
+                            {"timestamp": "2012-06-15T14:00:10", "value":{"lat":34.1,"lng":76.3,"speed":78.9}},<br />
+                            {"timestamp": "2012-06-15T14:00:20", "value":{"lat":36.6,"lng":56.1,"speed":99.3}},<br />
+                            {"timestamp": "2012-06-15T14:00:30", "value":{"lat":33.4,"lng":46.34,"speed":120}},<br />
+                            {"timestamp": "2012-06-15T14:00:40", "value":{"lat":35.4,"lng":46.1,"speed":98.2}}<br />
+                            ]<br />
+                        </blockquote>
+                        <h3 id="hdatagen">泛型传感器</h3>
+                        <blockquote>
+                            [<br />
+                            {"key": "xxxxxxx", "value":{.......},<br />
+                            {"key": "yyyyyyyyy", "value":{..........},<br />
+                            {"key": "zzzzzz", "value":{.........},<br />
+                            ]<br />
+                        </blockquote>
+                        <h2 id="hdataukey">访问授权</h2>
+                        <blockquote>U-ApiKey: &lt;your_api_key&gt;</blockquote>
+                        <hr class="am-article-divider">
+
+                        <h2 id="modputdels">模拟PUT,DELETE请求</h2>
+                        <hr />
+                        <h3>通过POST操作提交模拟put请求，通过GET操作模拟delete请求</h3>
+                        <blockquote>
+                            method=put(模拟put请求）<br />
+                            method=delete(模拟delete请求）<br />
+                        </blockquote>
+                        <h3>示例</h3>
+                        <blockquote>
+                            http://demo.icoolpy.com/v1.0/device/12/sensor/3?method=put <br />
+                            http://demo.icoolpy.com/v1.0/device/12/sensor/3?method=delete <br />
+                        </blockquote>
+                        <hr class="am-article-divider">
+
+                        <h2 id="apikey">获取API Key</h2>
+                        <h3>对该URL的一个HTTP GET请求可以获取用户的API Key</h3>
+                        <h2>URL</h2>
+                        <blockquote>/v1.0/user/apikey?username=&lt;username&gt;&pass=&lt;pass&gt;</blockquote>
+                        <h3>请求参数</h3>
+                        <table class="am-table am-table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>参数名</th>
+                                    <th>可为空</th>
+                                    <th>类型</th>
+                                    <th>说明</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>username</td>
+                                    <td>否</td>
+                                    <td>string</td>
+                                    <td>用户名</td>
+                                </tr>
+                                <tr>
+                                    <td>pass</td>
+                                    <td>否</td>
+                                    <td>string</td>
+                                    <td>密码</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h2>返回值</h2>
+                        <blockquote>
+                            用户的API Key信息
+                        </blockquote>
+                        <h2>返回值数据格式</h2>
+                        <h3>json</h3>
+                        <h2>返回值示例</h2>
+                        <blockquote>
+                            {<br />
+                            "errcode":"0",<br />
+                            "errmsg":"",<br />
+                            "apikey":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"<br />
+                            }<br />
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="am-u-md-3 am-u-md-pull-9 my-sidebar">
+            <div class="am-offcanvas" id="sidebar">
+                <div class="am-offcanvas-bar">
+                    <ul class="am-nav">
+                        <li class="am-nav-header"><a href="#begin">前言</a></li>
+                        <li>
+                            <a href="#devices">设备接口 Devices</a>
+                            <ul>
+                                <li>
+                                    <a href="#createdevice">创建设备</a>
+                                    <ul>
+                                        <li><a href="#createdevicepost">POST</a></li>
+                                        <li><a href="#createdevicepostdata">POST数据</a></li>
+                                        <li><a href="#createdeviceresult">返回值</a></li>
+                                        <li><a href="#createdeviceukey">访问授权</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#putdevices">编辑设备</a>
+                                    <ul>
+                                        <li><a href="#putdevice">PUT</a></li>
+                                        <li><a href="#putdevicepudata">PUT数据</a></li>
+                                        <li><a href="#putdeviceresult">返回值</a></li>
+                                        <li><a href="#putdeviceukey">访问授权</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#getdevices">罗列设备</a>
+                                    <ul>
+                                        <li><a href="#getdevice">GET</a></li>
+                                        <li><a href="#getdeveiceresult">返回值</a></li>
+                                        <li><a href="#getdeviceukey">访问授权</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#get1devices">查看设备</a>
+                                    <ul>
+                                        <li><a href="#get1device">GET</a></li>
+                                        <li><a href="#get1deveiceresult">返回值</a></li>
+                                        <li><a href="#get1deviceukey">访问授权</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#deldevices">删除设备</a>
+                                    <ul>
+                                        <li><a href="#deldevice">DELETE</a></li>
+                                        <li><a href="#deldeviceresult">返回值</a></li>
+                                        <li><a href="#deldeviceukey">访问授权</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#sensors">传感器 Sensors</a>
+                            <ul>
+                                <li>
+                                    <a href="#createsenesor">创建传感器</a>
+                                    <ul>
+                                        <li><a href="#createsenesorpost">POST</a></li>
+                                        <li><a href="#createsenesorpostdata">POST数据</a></li>
+                                        <li><a href="#createsenesorresult">返回值</a></li>
+                                        <li><a href="#createsenesorukey">访问授权</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#putsensors">编辑传感器</a>
+                                    <ul>
+                                        <li><a href="#putsensor">PUT</a></li>
+                                        <li><a href="#putsensordata">PUT数据</a></li>
+                                        <li><a href="#putsensorresult">返回值</a></li>
+                                        <li><a href="#putdeviceukey">访问授权</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#getseneors">罗列传感器</a>
+                                    <ul>
+                                        <li><a href="#getseneor">GET</a></li>
+                                        <li><a href="#getseneorresult">返回值</a></li>
+                                        <li><a href="#getseneorukey">访问授权</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#get1sensors">查看传感器</a>
+                                    <ul>
+                                        <li><a href="#get1sensor">GET</a></li>
+                                        <li>
+                                            <a href="#get1sensorresult">返回值</a>
+                                            <ul>
+                                                <li><a href="#get1sensorvalue">数值形传感器</a></li>
+                                                <li><a href="#get1sensorvalue">GPS传感器</a></li>
+                                                <li><a href="#get1sensorvalue">泛型传感器</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#get1sensorukey">访问授权</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#delsensors">删除传感器</a>
+                                    <ul>
+                                        <li><a href="#delsensor">DELETE</a></li>
+                                        <li><a href="#delsensorresult">返回值</a></li>
+                                        <li><a href="#delsensorukey">访问授权</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#datapoints">数据点 Datapoints</a>
+                            <ul>
+                                <li>
+                                    <a href="#createdatapoints">创建数据点</a>
+                                    <ul>
+                                        <li>
+                                            <a href="#createdatapoint">创建单个数据点</a>
+                                            <ul>
+                                                <li><a href="#createdatapointpostdata">POST</a></li>
+                                                <li><a href="#valdatapoint">数值型传感器</a></li>
+                                                <li><a href="#gpsdatapoint">GPS型传感器</a></li>
+                                                <li><a href="#gendatapoint">泛型传感器</a></li>
+                                                <li><a href="#createdatapointresult">返回值</a></li>
+                                                <li><a href="#createdatapointukey">访问授权</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#createmudatapoints">创建多个数据点</a>
+                                            <ul>
+                                                <li><a href="#createmudatapointpost">POST</a></li>
+                                                <li><a href="#valmudatapoint">数值型传感器</a></li>
+                                                <li><a href="#gpsmudatapoint">GPS型传感器</a></li>
+                                                <li><a href="#genmudatapoint">泛型传感器</a></li>
+                                                <li><a href="#createmudatapointresult">返回值</a></li>
+                                                <li><a href="#createmudatapointukey">访问授权</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#putdatapoints">编辑数据点</a>
+                                    <ul>
+                                        <li><a href="#putdatapoint">PUT</a></li>
+                                        <li>
+                                            <a href="#putdatapointdata">PUT数据</a>
+                                            <ul>
+                                                <li><a href="#putvaldatapoint">数值型传感器</a></li>
+                                                <li><a href="#putgpsdatapoint">GPS型传感器</a></li>
+                                                <li><a href="#putgendatapoint">泛型传感器</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#putdatapointresult">返回值</a></li>
+                                        <li><a href="#putdatapointukey">访问授权</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#get1datapoints">查看数据点</a>
+                                    <ul>
+                                        <li><a href="#get1datapoint">GET</a></li>
+                                        <li>
+                                            <a href="#get1datapointresult">返回值</a>
+                                            <ul>
+                                                <li><a href="#get1datapointvaluenotnull">key不为空</a></li>
+                                                <li><a href="#get1datapointvaluenull">key为空</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#get1datapointukey">访问授权</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#deldatapoints">删除数据点</a>
+                                    <ul>
+                                        <li><a href="#deldatapoint">DELETE</a></li>
+                                        <li><a href="#deldatapointresult">返回值</a></li>
+                                        <li><a href="#deldatapointukey">访问授权</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#hdatas">历史数据</a>
+                            <ul>
+                                <li>
+                                    <a href="#hdata">查看历史数据</a>
+                                    <ul>
+                                        <li><a href="#hdataget">GET</a></li>
+                                        <li>
+                                            <a href="#hdataresult">返回值</a>
+                                            <ul>
+                                                <li><a href="#hdataval">数值形传感器</a></li>
+                                                <li><a href="#hdatagps">GPS传感器</a></li>
+                                                <li><a href="#hdatagen">泛型传感器</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#hdataukey">访问授权</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="#modputdels">模拟PUT, DELETE请求</a></li>
+                        <li><a href="#apikey">API Key</a></li>
+                        <!--<li><a href="#">账号管理 API</a></li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <a href="#sidebar" class="am-btn am-btn-sm am-btn-success am-icon-bars am-show-sm-only my-button" data-am-offcanvas><span class="am-sr-only">侧栏导航</span></a>
+    </div>
+    <footer class="my-footer">
+        <p>
+            © 2014 <a href="http://icoolpy.com" target="_blank">Coolpy, Inc.</a> Licensed under <a href="http://opensource.org/licenses/MIT" target="_blank">MIT license</a>. by the coolpy Team.
+        </p>
+    </footer>
+    <!--[if lt IE 9]>
+    <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+    <script src="assets/js/polyfill/rem.min.js"></script>
+    <script src="assets/js/polyfill/respond.min.js"></script>
+    <script src="assets/js/amazeui.legacy.js"></script>
+    <![endif]-->
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/amazeui.min.js"></script>
+    <!--<![endif]-->
+</body>
+</html>

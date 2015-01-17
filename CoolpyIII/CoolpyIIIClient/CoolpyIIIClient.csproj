@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{12706411-81D1-489A-8554-CBDDEDAA9AB0}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CoolpyIIIClient</RootNamespace>
+    <AssemblyName>CoolpyIIIClient</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="assets\js\footable\css\fonts\footable.eot" />
+    <Content Include="assets\js\footable\css\fonts\footable.ttf" />
+    <Content Include="assets\js\footable\css\fonts\footable.woff" />
+    <Content Include="car.png" />
+    <Content Include="marker.png" />
+    <Content Include="assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="assets\fonts\FontAwesome.otf" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\css\admin.css" />
+    <Content Include="assets\css\amazeui.css" />
+    <Content Include="assets\css\amazeui.flat.css" />
+    <Content Include="assets\css\amazeui.flat.min.css" />
+    <Content Include="assets\css\amazeui.min.css" />
+    <Content Include="assets\css\app.css" />
+    <Content Include="assets\i\app-icon72x72%402x.png" />
+    <Content Include="assets\i\examples\admin-chrome.png" />
+    <Content Include="assets\i\examples\admin-firefox.png" />
+    <Content Include="assets\i\examples\admin-ie.png" />
+    <Content Include="assets\i\examples\admin-opera.png" />
+    <Content Include="assets\i\examples\admin-safari.png" />
+    <Content Include="assets\i\examples\adminPage.png" />
+    <Content Include="assets\i\examples\blogPage.png" />
+    <Content Include="assets\i\examples\landing.png" />
+    <Content Include="assets\i\examples\landingPage.png" />
+    <Content Include="assets\i\examples\loginPage.png" />
+    <Content Include="assets\i\examples\sidebarPage.png" />
+    <Content Include="assets\i\favicon.png" />
+    <Content Include="assets\i\startup-640x1096.png" />
+    <Content Include="assets\js\amazeui.js" />
+    <Content Include="assets\js\amazeui.legacy.js" />
+    <Content Include="assets\js\amazeui.legacy.min.js" />
+    <Content Include="assets\js\amazeui.min.js" />
+    <Content Include="assets\js\amazeui.widgets.helper.js" />
+    <Content Include="assets\js\amazeui.widgets.helper.min.js" />
+    <Content Include="app.js" />
+    <Content Include="assets\js\excanvas.js" />
+    <Content Include="assets\js\footable\css\fonts\footable.svg" />
+    <Content Include="assets\js\footable\css\footable.core.css" />
+    <Content Include="assets\js\footable\css\footable.core.min.css" />
+    <Content Include="assets\js\footable\css\footable.metro.css" />
+    <Content Include="assets\js\footable\css\footable.metro.min.css" />
+    <Content Include="assets\js\footable\css\footable.standalone.css" />
+    <Content Include="assets\js\footable\css\footable.standalone.min.css" />
+    <Content Include="assets\js\footable\js\footable.all.min.js" />
+    <Content Include="assets\js\footable\js\footable.bookmarkable.min.js" />
+    <Content Include="assets\js\footable\js\footable.filter.min.js" />
+    <Content Include="assets\js\footable\js\footable.grid.min.js" />
+    <Content Include="assets\js\footable\js\footable.min.js" />
+    <Content Include="assets\js\footable\js\footable.paginate.min.js" />
+    <Content Include="assets\js\footable\js\footable.sort.min.js" />
+    <Content Include="assets\js\footable\js\footable.striping.min.js" />
+    <Content Include="assets\js\handlebars.min.js" />
+    <Content Include="assets\js\jqplot\jquery.jqplot.css" />
+    <Content Include="assets\js\jqplot\jquery.jqplot.js" />
+    <Content Include="assets\js\jqplot\jquery.jqplot.min.css" />
+    <Content Include="assets\js\jqplot\jquery.jqplot.min.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.barRenderer.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.barRenderer.min.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.BezierCurveRenderer.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.BezierCurveRenderer.min.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.blockRenderer.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.blockRenderer.min.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.bubbleRenderer.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.bubbleRenderer.min.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.canvasAxisLabelRenderer.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.canvasAxisLabelRenderer.min.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.canvasAxisTickRenderer.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.canvasAxisTickRenderer.min.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.canvasOverlay.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.canvasOverlay.min.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.canvasTextRenderer.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.canvasTextRenderer.min.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.categoryAxisRenderer.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.categoryAxisRenderer.min.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.ciParser.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.ciParser.min.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.cursor.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.cursor.min.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.dateAxisRenderer.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.dateAxisRenderer.min.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.donutRenderer.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.donutRenderer.min.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.dragable.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.dragable.min.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.enhancedLegendRenderer.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.enhancedLegendRenderer.min.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.funnelRenderer.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.funnelRenderer.min.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.highlighter.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.highlighter.min.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.json2.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.json2.min.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.logAxisRenderer.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.logAxisRenderer.min.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.mekkoAxisRenderer.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.mekkoAxisRenderer.min.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.mekkoRenderer.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.mekkoRenderer.min.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.meterGaugeRenderer.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.meterGaugeRenderer.min.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.mobile.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.mobile.min.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.ohlcRenderer.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.ohlcRenderer.min.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.pieRenderer.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.pieRenderer.min.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.pointLabels.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.pointLabels.min.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.pyramidAxisRenderer.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.pyramidAxisRenderer.min.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.pyramidGridRenderer.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.pyramidGridRenderer.min.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.pyramidRenderer.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.pyramidRenderer.min.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.trendline.js" />
+    <Content Include="assets\js\jqplot\plugins\jqplot.trendline.min.js" />
+    <Content Include="assets\js\jquery.min.js" />
+    <Content Include="assets\js\knockout-3.2.0.debug.js" />
+    <Content Include="assets\js\knockout-3.2.0.js" />
+    <Content Include="assets\js\knockout.validation.js" />
+    <Content Include="assets\js\knockout.validation.min.js" />
+    <Content Include="assets\js\knockout.validation.zh-CN.js" />
+    <Content Include="assets\js\polyfill\rem.min.js" />
+    <Content Include="assets\js\polyfill\respond.min.js" />
+    <Content Include="assets\js\switch\css\style.css" />
+    <Content Include="assets\js\switch\js\html5shiv.min.js" />
+    <Content Include="assets\js\timeline\css\style.css" />
+    <Content Include="assets\js\timeline\js\timeline.js" />
+    <Content Include="index.html" />
+    <Content Include="Web.config" />
+    <Content Include="web\acpwd_page.html" />
+    <Content Include="web\ac_addus_page.html" />
+    <Content Include="web\ac_page.html" />
+    <Content Include="web\ac_uss_page.html" />
+    <Content Include="web\center_page.html" />
+    <Content Include="web\dis_gen_page.html" />
+    <Content Include="web\dis_gps_page.html" />
+    <Content Include="web\dis_img_page.html" />
+    <Content Include="web\dis_val_page.html" />
+    <Content Include="web\dvadd_page.html" />
+    <Content Include="web\dvedit_page.html" />
+    <Content Include="web\dvs_page.html" />
+    <Content Include="web\ssadd_page.html" />
+    <Content Include="web\ssedit_page.html" />
+    <Content Include="web\sss_page.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>42778</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:42778/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

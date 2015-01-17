@@ -1,0 +1,328 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <title>Coolpy | 酷痞物联</title>
+    <meta name="description" content="酷痞物联私有物联网云计算平台" />
+    <meta name="keywords" content="coolpy,酷痞,物联网,云平台,私有物联网,arduino,stm32,linux,arm,pcduino,树莓派,香蕉派,单片机,NanoPC" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="alternate icon" type="image/png" href="assets/i/favicon.png">
+    <link rel="stylesheet" href="assets/css/amazeui.min.css" />
+    <style>
+        .get {
+            background: #1E5B94;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .get-title {
+            font-size: 200%;
+            border: 2px solid #fff;
+            padding: 20px;
+            display: inline-block;
+        }
+
+        .get-btn {
+            background: #fff;
+        }
+
+        .detail {
+            background: #fff;
+        }
+
+        .detail-h2 {
+            text-align: center;
+            font-size: 150%;
+            margin: 40px 0;
+        }
+
+        .detail-h3 {
+            color: #1f8dd6;
+        }
+
+        .detail-p {
+            color: #7f8c8d;
+        }
+
+        .detail-mb {
+            margin-bottom: 30px;
+        }
+
+        .hope {
+            background: #0bb59b;
+            padding: 50px 0;
+        }
+
+        .hope-img {
+            text-align: center;
+        }
+
+        .hope-hr {
+            border-color: #149C88;
+        }
+
+        .hope-title {
+            font-size: 140%;
+        }
+
+        .about {
+            background: #fff;
+            padding: 40px 0;
+            color: #7f8c8d;
+        }
+
+        .about-color {
+            color: #34495e;
+        }
+
+        .about-title {
+            font-size: 180%;
+            padding: 30px 0 50px 0;
+            text-align: center;
+        }
+
+        .footer p {
+            color: #7f8c8d;
+            margin: 0;
+            padding: 15px 0;
+            text-align: center;
+            background: #2d3e50;
+        }
+    </style>
+</head>
+<body>
+    <header class="am-topbar am-topbar-fixed-top">
+        <div class="am-container">
+            <h1 class="am-topbar-brand">
+                <a href="http://icoolpy.com">酷痞物联</a>
+            </h1>
+
+            <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-secondary am-show-sm-only"
+                    data-am-collapse="{target: '#collapse-head'}">
+                <span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span>
+            </button>
+
+            <div class="am-collapse am-topbar-collapse" id="collapse-head">
+                <ul class="am-nav am-nav-pills am-topbar-nav">
+                    <li class="am-active"><a href="/">首页</a></li>
+                    <li><a href="http://demo.icoolpy.com" target="_blank">官方平台</a></li>
+                    <li><a href="http://www.cnblogs.com/jacle169/category/642582.html" target="_blank">官方博客</a></li>
+                    <li><a href="docs.html" target="_blank">API文档</a></li>
+                    <li><a href="http://pan.baidu.com/s/1jGiQfK6" target="_blank">ArduinoSDK</a></li>
+                    <li class="am-dropdown" data-am-dropdown>
+                        <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+                            相关博客 <span class="am-icon-caret-down"></span>
+                        </a>
+                        <ul class="am-dropdown-content">
+                            <li><a href="http://blog.csdn.net/jiasike/article/category/2792395" target="_blank">Frank的博客</a></li>
+                            <li><a href="http://www.cnblogs.com/gbcc" target="_blank">嘎嘣脆的博客</a></li>
+                        </ul>
+                    </li>
+                    <li class="am-dropdown" data-am-dropdown>
+                        <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+                            新手上路 <span class="am-icon-caret-down"></span>
+                        </a>
+                        <ul class="am-dropdown-content">
+                            <li><a href="http://www.cnblogs.com/jacle169/p/4176629.html" target="_blank">Win安装说明</a></li>
+                            <li><a href="http://www.cnblogs.com/jacle169/p/4177890.html" target="_blank">Linux安装说明</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <div class="am-topbar-right am-padding-vertical-sm">
+                    <!-- JiaThis Button BEGIN -->
+                    <div class="jiathis_style_32x32">
+                        <a class="jiathis_button_tsina"></a>
+                        <a class="jiathis_button_qzone"></a>
+                        <a href="http://www.jiathis.com/share?uid=1519061" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+                        <a class="jiathis_counter_style"></a>
+                    </div>
+                    <script type="text/javascript">
+                        var jiathis_config = {
+                            data_track_clickback: true,
+                            url: "http://icoolpy.com",
+                            summary: "你值得拥有自己个人的物联网平台，请使用酷痞！！",
+                            title: "酷痞Coolpy私有物联网平台 #酷痞#",
+                            shortUrl: false,
+                            hideMore: false
+                        }
+                    </script>
+                    <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1519061" charset="utf-8"></script>
+                    <!-- JiaThis Button END -->
+
+                </div>
+                <!--<div class="am-topbar-right">
+                    <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm"><span class="am-icon-pencil"></span> 注册</button>
+                </div>
+
+                <div class="am-topbar-right">
+                    <button class="am-btn am-btn-primary am-topbar-btn am-btn-sm"><span class="am-icon-user"></span> 登录</button>
+                </div>-->
+            </div>
+        </div>
+    </header>
+
+    <div class="get">
+        <div class="am-g">
+            <div class="am-u-lg-12">
+                <h1 class="get-title">酷痞 - 私有物联网云计算平台</h1>
+
+                <p>
+                    你值得拥有自己个人的物联网平台，请使用酷痞！！
+                </p>
+
+                <a href="http://pan.baidu.com/s/1kTIa9gz" target="_blank" class="am-btn am-btn-success  am-round am-btn-lg">
+                    <i class="am-icon-windows"></i>
+                    Win酷痞
+                    <i class="am-icon-cloud-download"></i>
+                </a>
+                <a href="http://pan.baidu.com/s/1bnvWmKZ" target="_blank" class="am-btn am-btn-success  am-round am-btn-lg">
+                    <i class="am-icon-linux"></i>
+                    Linux酷痞
+                    <i class="am-icon-cloud-download"></i>
+                </a>
+                <a href="http://pan.baidu.com/s/1o6p4kB4" target="_blank" class="am-btn am-btn-success  am-round am-btn-lg">
+                    <i class="am-icon-linux"></i>
+                    OpenWrt酷痞
+                    <i class="am-icon-cloud-download"></i>
+                </a>
+                    <hr />
+                    <a href="http://pan.baidu.com/s/1dGGBO" target="_blank" class="am-btn am-btn-warning  am-round am-btn-lg">
+                        <i class="am-icon-windows"></i>
+                        Win数据库
+                        <i class="am-icon-cloud-download"></i>
+                    </a>
+                    <a href="http://pan.baidu.com/s/1mgl3LOG" target="_blank" class="am-btn am-btn-warning  am-round am-btn-lg">
+                        <i class="am-icon-linux"></i>
+                        Linux数据库
+                        <i class="am-icon-cloud-download"></i>
+                    </a>
+                    <hr />
+                <p >
+                    <!--<i class="am-icon-qq"></i> 
+                    <a href="http://jq.qq.com/?_wv=1027&k=ZR66ON" target="_blank"> 酷痞群:206129447 </a>-->
+                    <img src="1419335373682.png" /><br />
+                    <a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=6858a3273f60b31ef934db6a6c1514cc851b4f1c36a872c445b463de78e28057"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="Coolpy" title="Coolpy"></a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="detail">
+        <div class="am-g am-container">
+            <div class="am-u-lg-12">
+                <h2 class="detail-h2">智能家居 、城市、农业，让我们一起进入物联网时代！</h2>
+
+                <div class="am-g">
+                    <div class="am-u-lg-3 am-u-md-6 am-u-sm-12 detail-mb">
+
+                        <h3 class="detail-h3">
+                            <i class="am-icon-mobile am-icon-sm"></i>
+                            为物联网而生
+                        </h3>
+
+                        <p class="detail-p">
+                            Coolpy酷痞让你快速建立自己的物联网云计算平台，从此你可以跟第三方物联网平台说ByeBye了。
+                        </p>
+                    </div>
+                    <div class="am-u-lg-3 am-u-md-6 am-u-sm-12 detail-mb">
+                        <h3 class="detail-h3">
+                            <i class="am-icon-cogs am-icon-sm"></i>
+                            跨平台运行
+                        </h3>
+
+                        <p class="detail-p">
+                            Coolpy酷痞可以运行于任何服务器系统（windows系列、Mac系统、Linux系列等，甚至运行于wrt路由器或ArduinoYún等）
+                        </p>
+                    </div>
+                    <div class="am-u-lg-3 am-u-md-6 am-u-sm-12 detail-mb">
+                        <h3 class="detail-h3">
+                            <i class="am-icon-check-square-o am-icon-sm"></i>
+                            跨平台前端技术
+                        </h3>
+
+                        <p class="detail-p">
+                            无需担心手机或平板不能正常使用，Coolpy酷痞前端程序使用html5技术所有智能手机、平板、PC等华丽运行。
+                        </p>
+                    </div>
+                    <div class="am-u-lg-3 am-u-md-6 am-u-sm-12 detail-mb">
+                        <h3 class="detail-h3">
+                            <i class="am-icon-send-o am-icon-sm"></i>
+                            开放源代码
+                        </h3>
+
+                        <p class="detail-p">
+                            Coolpy酷痞开放源码，你可以自由定制自己想要的服务端功能或者前端程序，或直接使用API文档开发特别功能的智能客户端
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hope">
+        <div class="am-g am-container">
+            <div class="am-u-lg-4 am-u-md-6 am-u-sm-12 hope-img">
+                <img src="assets/i/examples/landing.png" alt="" data-am-scrollspy="{animation:'slide-left', repeat: false}">
+                <hr class="am-article-divider am-show-sm-only hope-hr">
+            </div>
+            <div class="am-u-lg-8 am-u-md-6 am-u-sm-12">
+                <h2 class="hope-title">同我们一起打造你的物联网云平台吧！</h2>
+
+                <p>
+                    在知识爆炸的年代，我们不愿成为知识的过客，拥抱开源文化，发挥社区的力量，参与到Coolpy酷痞开源项目能获得自我提升。
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="about">
+        <div class="am-g am-container">
+            <div class="am-u-lg-12">
+                <h2 class="about-title about-color">Coolpy 酷痞 崇尚开放、自由，非常欢迎大家的参与</h2>
+
+                <div class="am-g">
+                    <div class="am-u-lg-6 am-u-md-8 am-u-sm-12">
+                        <h4 class="about-color">终身免费使用</h4>
+
+                        <p>Coolpy 酷痞 将作为长期支持并持续开发产品。可用于任何商业行为并永久免费使用。</p>
+                        <h4 class="about-color">联系作者</h4>
+
+                        <p><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=229292620&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:229292620:42" alt="联系Coolpy创始人" title="联系Coolpy创始人" /></a> <br /> Email: JACLE169@21CN.COM <br /> 微博：<a href="http://weibo.com/funsl">http://weibo.com/funsl</a><br />官网地址：<a href="http://icoolpy.com">ICOOLPY.COM</a></p>
+                    </div>
+
+                    <div id="uyan_frame" class="am-u-lg-6 am-u-md-4 am-u-sm-12"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>
+            © 2014 <a href="http://icoolpy.com" target="_blank">Coolpy, Inc.</a> Licensed under <a href="http://opensource.org/licenses/MIT" target="_blank">MIT license</a>. by the coolpy Team.
+            <br /><a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备14083151号-2</a>
+        </p>
+        <p>
+            <a href="http://webscan.360.cn/index/checkwebsite/url/icoolpy.com"><img border="0" src="http://img.webscan.360.cn/status/pai/hash/bcbb2c9b806c2afacc8988376862f2e4" /></a>
+        </p>
+    </footer>
+    <!--[if lt IE 9]>
+    <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+    <script src="assets/js/polyfill/rem.min.js"></script>
+    <script src="assets/js/polyfill/respond.min.js"></script>
+    <script src="assets/js/amazeui.legacy.js"></script>
+    <![endif]-->
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/amazeui.min.js"></script>
+    <!--<![endif]-->
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1519061"></script>
+</body>
+</html>
