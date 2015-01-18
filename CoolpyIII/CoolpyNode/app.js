@@ -1040,44 +1040,59 @@ router.route('/device/:dvid/sensor/:ssid/datapoint/:key')
 
 function deldatapoint(req, res){
     if (req.type === "value") {
-        ValuedpModel.findOneAndRemove({ dvid: req.params.dvid, ssid: req.params.ssid, timestamp: req.params.key }, function (err, ss) {
-            if (err) {
-                if (!config.production) {
-                    res.send(err);
+        if (config.mongo.toString().startWith('tingodb')) {
+            ValuedpModel.remove({ dvid: req.params.dvid, ssid: req.params.ssid, timestamp: req.params.key }, true);
+            res.end();
+        } else {
+            ValuedpModel.findOneAndRemove({ dvid: req.params.dvid, ssid: req.params.ssid, timestamp: req.params.key }, function (err, ss) {
+                if (err) {
+                    if (!config.production) {
+                        res.send(err);
+                    } else {
+                        res.status(404);
+                        res.end();
+                    }
                 } else {
-                    res.status(404);
                     res.end();
                 }
-            } else {
-                res.end();
-            }
-        });
+            });
+        }
     } else if (req.type === "gps") {
-        GpsdpModel.findOneAndRemove({ dvid: req.params.dvid, ssid: req.params.ssid, timestamp: req.params.key }, function (err, ss) {
-            if (err) {
-                if (!config.production) {
-                    res.send(err);
+        if (config.mongo.toString().startWith('tingodb')) {
+            GpsdpModel.remove({ dvid: req.params.dvid, ssid: req.params.ssid, timestamp: req.params.key }, true);
+            res.end();
+        } else {
+            GpsdpModel.findOneAndRemove({ dvid: req.params.dvid, ssid: req.params.ssid, timestamp: req.params.key }, function (err, ss) {
+                if (err) {
+                    if (!config.production) {
+                        res.send(err);
+                    } else {
+                        res.status(404);
+                        res.end();
+                    }
                 } else {
-                    res.status(404);
                     res.end();
                 }
-            } else {
-                res.end();
-            }
-        });
+            });
+        }
     } else if (req.type === "gen") {
-        GendpModel.findOneAndRemove({ dvid: req.params.dvid, ssid: req.params.ssid, key: req.params.key }, function (err, ss) {
-            if (err) {
-                if (!config.production) {
-                    res.send(err);
+        if (config.mongo.toString().startWith('tingodb')) {
+            GendpModel.remove({ dvid: req.params.dvid, ssid: req.params.ssid, key: req.params.key }, true);
+            res.end();
+        } else {
+            GendpModel.findOneAndRemove({ dvid: req.params.dvid, ssid: req.params.ssid, key: req.params.key }, function (err, ss) {
+                if (err) {
+                    if (!config.production) {
+                        res.send(err);
+                    } else {
+                        res.status(404);
+                        res.end();
+                    }
                 } else {
-                    res.status(404);
                     res.end();
                 }
-            } else {
-                res.end();
-            }
-        });
+            });
+        }
     } else {
         res.json({ Error: "no value" });
     }
