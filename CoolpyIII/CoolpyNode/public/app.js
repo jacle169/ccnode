@@ -67,10 +67,6 @@
       }
     });
     
-    $('#exit-confirm').on('closed.modal.amui', function () {
-        $(this).removeData('am.modal');
-    });
-
   function appvm() {
       var self = this;
       self.showuser = ko.observable(false);
@@ -109,7 +105,10 @@
               $('#my-prompt').modal('open');
           }
       });
-
+        
+        self.link_nav = function (){
+            go("web/nav_page.html");
+        }
       self.link_acuss = function () {
           go("web/ac_uss_page.html");
       };

@@ -137,34 +137,36 @@
                     xhr.setRequestHeader("U-ApiKey", $.AMUI.utils.cookie.get('ukey'));
                 }
             }).done(function (data) {
-                ko.utils.arrayForEach(data, function (dv) {
-                    $.ajax({
-                        url: "/v1.0/device/" + dv.id + "/sensors",
-                        beforeSend: function (xhr) {
-                            xhr.setRequestHeader("U-ApiKey", $.AMUI.utils.cookie.get('ukey'));
-                        }
-                    }).done(function (ssdata) {
-                        dv.sss = ssdata;
-                        ko.utils.arrayForEach(ssdata, function (ss) { 
-                            if (ss.type === 'switcher') {
-                                $.ajax({
-                                    url: "/v1.0/device/" + ss.dvid + "/sensor/" + ss.id + "/datapoint",
-                                    beforeSend: function (xhr) {
-                                        xhr.setRequestHeader("U-ApiKey", $.AMUI.utils.cookie.get('ukey'));
-                                    }
-                                }).done(function (sw) {
-                                    if (sw.value === 1) {
-                                        self.sws.push(ss.title);
-                                    }
-                                });
+                if (data.length === 0) {
+                    $("#render").load("web/nav_page.html");
+                } else {
+                    ko.utils.arrayForEach(data, function (dv) {
+                        $.ajax({
+                            url: "/v1.0/device/" + dv.id + "/sensors",
+                            beforeSend: function (xhr) {
+                                xhr.setRequestHeader("U-ApiKey", $.AMUI.utils.cookie.get('ukey'));
                             }
-                        })
-                        self.dvs.push(dv);
+                        }).done(function (ssdata) {
+                            dv.sss = ssdata;
+                            ko.utils.arrayForEach(ssdata, function (ss) {
+                                if (ss.type === 'switcher') {
+                                    $.ajax({
+                                        url: "/v1.0/device/" + ss.dvid + "/sensor/" + ss.id + "/datapoint",
+                                        beforeSend: function (xhr) {
+                                            xhr.setRequestHeader("U-ApiKey", $.AMUI.utils.cookie.get('ukey'));
+                                        }
+                                    }).done(function (sw) {
+                                        if (sw.value === 1) {
+                                            self.sws.push(ss.title);
+                                        }
+                                    });
+                                }
+                            })
+                            self.dvs.push(dv);
+                        });
                     });
-                });
+                }
             }).fail(function (xhr) {
-                xhr.aa();
-
             });
         };
     };
