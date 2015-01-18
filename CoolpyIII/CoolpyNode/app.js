@@ -88,7 +88,7 @@ UserModel.findOne({ userId: "admin" }, function (err, u) {
 function takeup(req, res, next) {
     var userId = req.query.username;
     var pwd = req.query.pass;
-    if (validator.isLength(userId, 2, 64) && validator.isLength(userId, 2, 64)) {
+    if (validator.isLength(userId, 2, 64) && validator.isLength(pwd, 2, 64)) {
         req.uid = userId;
         req.pwd = pwd;
         next();
