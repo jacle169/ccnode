@@ -13,6 +13,9 @@ String.prototype.startWith = function (str) {
 if (config.mongo.toString().startWith('tingodb')) {
     var tungus = require('tungus');
 }
+if (config.openLimit) {
+    var limitr = require('limitr');
+}
 var mongoose = require('mongoose');
 var autoIncrement = require('mongoose-auto-increment');
 
@@ -34,6 +37,10 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+
+if (config.openLimit) {
+    app.use(limitr(config.limitr));
+};
 
 function defaultContentTypeMiddleware(req, res, next) {
     req.headers['content-type'] = req.headers['content-type'] || 'application/json';
