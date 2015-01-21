@@ -69,6 +69,7 @@
     <Content Include="public\assets\js\jquery-ui-1.11.2.custom\jquery-ui.theme.css" />
     <Content Include="public\assets\js\jquery-ui-1.11.2.custom\jquery-ui.theme.min.css" />
     <Content Include="public\stylesheets\style.styl" />
+    <Content Include="public\web\dis_val_list_page.html" />
     <Content Include="public\web\nav_page.html" />
     <Content Include="README.md" />
     <Content Include="views\index.jade" />

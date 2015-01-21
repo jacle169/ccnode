@@ -12,10 +12,12 @@
             <ul data-bind="foreach: { data: dv.sss, as: 'item' }" class="am-list am-list-static am-list-border">
                 <!-- ko if: item.type === 'value' -->
                 <li class="am-g am-list-item-desced">
-                    <a href="###" data-bind="click: $root.displayval">
+                    <a href="###">
                         <span class="am-icon-line-chart"></span> |
                         <span data-bind="text:item.title"></span>
-                        <span class="am-fr am-icon-chevron-right"></span>
+                        <span class="am-fr" data-bind="click: $root.displayval">图表显示</span>
+                        <br />
+                        <span class="am-fr" data-bind="click: $root.displayval2">列表显示</span>
                     </a>
                     <div class="am-list-item-text" data-bind="text:item.about"></div>
                 </li>
@@ -97,6 +99,12 @@
             $.AMUI.utils.cookie.set('dvid', ss.dvid);
             $.AMUI.utils.cookie.set('ssid', ss.id);
             $("#render").load("web/dis_val_page.html");
+        };
+
+        self.displayval2 = function (ss) {
+            $.AMUI.utils.cookie.set('dvid', ss.dvid);
+            $.AMUI.utils.cookie.set('ssid', ss.id);
+            $("#render").load("web/dis_val_list_page.html");
         };
 
         self.switchChanged = function (item) {
