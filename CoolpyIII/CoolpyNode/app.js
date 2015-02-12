@@ -848,8 +848,8 @@ router.route('/device/:dvid/sensor/:ssid/datapoint')
                         var obj = dp.toObject();
                         delete obj._id;
                         delete obj.__v;
-                        delete obj.dvid;
-                        delete obj.ssid;
+                        //delete obj.dvid;
+                        //delete obj.ssid;
                         obj.timestamp = obj.timestamp.toISOString().replace(/\..+/, '');
                         res.json(obj);
                     } else {
@@ -871,8 +871,8 @@ router.route('/device/:dvid/sensor/:ssid/datapoint')
                         var obj = dp.toObject();
                         delete obj._id;
                         delete obj.__v;
-                        delete obj.dvid;
-                        delete obj.ssid;
+                        //delete obj.dvid;
+                        //delete obj.ssid;
                         obj.timestamp = obj.timestamp.toISOString().replace(/\..+/, '');
                         res.json(obj);
                     } else {
@@ -894,8 +894,8 @@ router.route('/device/:dvid/sensor/:ssid/datapoint')
                         var obj = dp.toObject();
                         delete obj._id;
                         delete obj.__v;
-                        delete obj.dvid;
-                        delete obj.ssid;
+                        //delete obj.dvid;
+                        //delete obj.ssid;
                         res.json(obj);
                     } else {
                         res.end();
@@ -916,8 +916,8 @@ router.route('/device/:dvid/sensor/:ssid/datapoint')
                         var obj = dp.toObject();
                         delete obj._id;
                         delete obj.__v;
-                        delete obj.dvid;
-                        delete obj.ssid;
+                        //delete obj.dvid;
+                        //delete obj.ssid;
                         res.json(obj);
                     } else {
                         res.end();
