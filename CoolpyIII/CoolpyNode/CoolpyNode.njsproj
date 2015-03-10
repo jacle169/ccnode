@@ -33,6 +33,7 @@
     <Compile Include="app.js" />
     <Compile Include="app\models\admin.js" />
     <Compile Include="app\models\device.js" />
+    <Compile Include="app\models\gencontroldp.js" />
     <Compile Include="app\models\gendp.js" />
     <Compile Include="app\models\gpsdp.js" />
     <Compile Include="app\models\sensor.js" />
@@ -69,8 +70,6 @@
     <Content Include="public\assets\js\jquery-ui-1.11.2.custom\jquery-ui.theme.css" />
     <Content Include="public\assets\js\jquery-ui-1.11.2.custom\jquery-ui.theme.min.css" />
     <Content Include="public\stylesheets\style.styl" />
-    <Content Include="public\web\dis_val_list_page.html" />
-    <Content Include="public\web\nav_page.html" />
     <Content Include="README.md" />
     <Content Include="views\index.jade" />
     <Content Include="views\layout.jade" />

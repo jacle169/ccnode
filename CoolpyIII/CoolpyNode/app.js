@@ -77,6 +77,7 @@ var ValuedpModel = require('./app/models/valuedp.js');
 var GpsdpModel = require('./app/models/gpsdp.js');
 var GendpModel = require('./app/models/gendp.js');
 var SwsdpModel = require('./app/models/swsdp.js');
+var gencontrolModel = require('./app/models/gencontroldp.js');
 var UserModel = require('./app/models/admin.js');
 
 //系统启动时没有admin账号会自动建一个
@@ -221,6 +222,7 @@ function delalldps(dvid, ssid) {
     delallgendps(dvid, ssid);
     delallgpsdps(dvid, ssid);
     delallswsdps(dvid, ssid);
+    delallgencontroldps(dvid, ssid);
 }
 
 function delallvaldps(dvid, ssid){
@@ -237,6 +239,10 @@ function delallgpsdps(dvid, ssid) {
 
 function delallswsdps(dvid, ssid) {
     SwsdpModel.remove({ dvid: dvid, ssid: ssid }, true);
+}
+
+function delallgencontroldps(dvid, ssid){
+    gencontrolModel.remove({ dvid: dvid, ssid: ssid }, true);
 }
 
 // get an instance of router
@@ -595,14 +601,19 @@ router.route('/device/:dvid/sensors')
                     res.status(404);
                     res.end();
                 }
-            } else {
-                if (sensor.type === "switcher") {
-                    var sw = new SwsdpModel();
-                    sw.dvid = req.params.dvid;
-                    sw.ssid = nss.id;
-                    sw.value = 0;
-                    sw.save();
-                };
+            } else if (sensor.type === "switcher") {
+                var sw = new SwsdpModel();
+                sw.dvid = req.params.dvid;
+                sw.ssid = nss.id;
+                sw.value = 0;
+                sw.save();
+                res.json({ sensor_id: nss.id });
+            } else if (sensor.type === "gencontrol") {
+                var genc = new gencontrolModel();
+                genc.dvid = req.params.dvid;
+                genc.ssid = nss.id;
+                genc.value = 0;
+                genc.save();
                 res.json({ sensor_id: nss.id });
             }
         });
@@ -924,28 +935,63 @@ router.route('/device/:dvid/sensor/:ssid/datapoint')
                     }
                 }
             });
-        } else {
+    } else if (req.type === "gencontrol") {
+        gencontrolModel.findOne({ dvid: req.params.dvid, ssid: req.params.ssid }).exec(function (err, dp) {
+            if (err) {
+                if (!config.production) {
+                    res.send(err);
+                } else {
+                    res.status(404);
+                    res.end();
+                }
+            } else {
+                if (dp !== null) {
+                    var obj = dp.toObject();
+                    delete obj._id;
+                    delete obj.__v;
+                    //delete obj.dvid;
+                    //delete obj.ssid;
+                    res.json(obj);
+                } else {
+                    res.end();
+                }
+            }
+        });
+    } else {
             res.json({ Error: "no value" });
         }
     })
 
     .put(isAuthenticated, isDvsInUkey, isSssInDvs, getSensorType, function (req, res) { 
-        if (req.type === "switcher") {
-            SwsdpModel.findOneAndUpdate({ dvid: req.params.dvid, ssid: req.params.ssid }, req.body, function (err, ss) {
-                if (err) {
-                    if (!config.production) {
-                        res.send(err);
-                    } else {
-                        res.status(404);
-                        res.end();
-                    }
+    if (req.type === "switcher") {
+        SwsdpModel.findOneAndUpdate({ dvid: req.params.dvid, ssid: req.params.ssid }, req.body, function (err, ss) {
+            if (err) {
+                if (!config.production) {
+                    res.send(err);
                 } else {
+                    res.status(404);
                     res.end();
                 }
-            });
-        } else {
-            res.json({ Error: "no value" });
-        }
+            } else {
+                res.end();
+            }
+        });
+    } else if (req.type === "gencontrol") {
+        gencontrolModel.findOneAndUpdate({ dvid: req.params.dvid, ssid: req.params.ssid }, req.body, function (err, ss) {
+            if (err) {
+                if (!config.production) {
+                    res.send(err);
+                } else {
+                    res.status(404);
+                    res.end();
+                }
+            } else {
+                res.end();
+            }
+        });
+    } else {
+        res.json({ Error: "no value" });
+    }
     });
 
 router.route('/device/:dvid/sensor/:ssid/datapoint/:key')

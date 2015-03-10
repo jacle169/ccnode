@@ -68,6 +68,19 @@
                     </div>
                 </li>
                 <!-- /ko -->
+
+                <!-- ko if: item.type === 'gencontrol' -->
+                <li class="am-g am-list-item-desced">
+                    <span class="am-icon-power-off"></span> |
+                    <span data-bind="text:item.title"></span>
+                    <div class="am-input-group">
+                        <input type="text" class="am-form-field" data-bind="value:gencval">
+                        <span class="am-input-group-btn">
+                            <button class="am-btn am-btn-default" type="button" data-bind="click: postgenc">提交</button>
+                        </span>
+                    </div>
+                </li>
+                <!-- /ko -->
             </ul>
         </div>
     </div>
@@ -76,7 +89,7 @@
 <script type="text/javascript">
     function centervm() {
         var self = this;
-
+        self.gencval = ko.observable("");
         self.displaygps = function (ss) {
             $.AMUI.utils.cookie.set('dvid', ss.dvid);
             $.AMUI.utils.cookie.set('ssid', ss.id);
@@ -136,6 +149,29 @@
                 }
             });
         }
+
+        self.postgenc = function (item) {
+            var data = { value: self.gencval() };
+            $.ajax({
+                type: "PUT",
+                url: "/v1.0/device/" + item.dvid + "/sensor/" + item.id + "/datapoint",
+                data: data,
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("U-ApiKey", $.AMUI.utils.cookie.get('ukey'));
+                },
+                success: function (data) {
+                    if (data !== "") {
+                        $("#msg").html(data);
+                        $('#my-prompt').modal('open');
+                    }
+                },
+                error: function (xhr, status, error) {
+                    $("#msg").html(xhr.responseText);
+                    $('#my-prompt').modal('open');
+                }
+            });
+        }
+
         self.sws = ko.observableArray();
         self.dvs = ko.observableArray();
         self.loaddata = function () {
@@ -156,6 +192,7 @@
                             }
                         }).done(function (ssdata) {
                             dv.sss = ssdata;
+                            //取得所有开关的状态并修改显示状态
                             ko.utils.arrayForEach(ssdata, function (ss) {
                                 if (ss.type === 'switcher') {
                                     $.ajax({
@@ -167,6 +204,15 @@
                                         if (sw.value === 1) {
                                             self.sws.push(ss.title);
                                         }
+                                    });
+                                } else if (ss.type === 'gencontrol') {
+                                    $.ajax({
+                                        url: "/v1.0/device/" + ss.dvid + "/sensor/" + ss.id + "/datapoint",
+                                        beforeSend: function (xhr) {
+                                            xhr.setRequestHeader("U-ApiKey", $.AMUI.utils.cookie.get('ukey'));
+                                        }
+                                    }).done(function (genc) {
+                                        self.gencval(genc.value);
                                     });
                                 }
                             })

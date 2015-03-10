@@ -14,7 +14,7 @@ var strLenValidator = [
 var SensorSchema = new Schema({
     id: Number,
     dvid: Number,
-    type: { type: String, enum: ['value', 'switcher', 'gps', 'gen', 'photo'] },
+    type: { type: String, enum: ['value', 'switcher', 'gps', 'gen', 'photo', 'gencontrol'] },
     title: { type: String, required: true, validate: strLenValidator },
     about: { type: String, required: true , validate: strLenValidator },
     tags: { type: [String], required: true },

@@ -42,8 +42,8 @@
     function sssvm() {
         var self = this;
         //#region 数据显示
-        self.basictype = ko.observableArray(['value', 'gps', 'gen', 'photo', 'switcher']);
-        self.type = ko.observableArray(["数值型传感器", "GPS", "泛型传感器", "图像传感器", "开关"]);
+        self.basictype = ko.observableArray(['value', 'gps', 'gen', 'photo', 'switcher', 'gencontrol']);
+        self.type = ko.observableArray(["数值型传感器", "GPS", "泛型传感器", "图像传感器", "开关", "泛型控制器"]);
         //按数据的int类型转换为文字显示
         self.gettype = function (data) {
             return self.type()[self.basictype.indexOf(data.type)];
